@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {io} from 'socket.io-client';
 
 // URL del servidor Socket.IO (ajusta según tu configuración)
-const socket = io('http://localhost:5500', {
+const socket = io('http://localhost:5555', {
   transports: ['websocket', 'polling'], // Soporte para WebSocket y polling
   reconnection: true, // Intentar reconectar automáticamente
 });

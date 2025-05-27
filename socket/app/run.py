@@ -7,9 +7,7 @@ app = Flask(__name__)
 # )  # Permitir conexiones desde React
 
 
-socketio = SocketIO(
-    app, cors_allowed_origins="*"
-)  # Permitir conexiones desde cualquier origen
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
 
 
 @socketio.on("connect")
@@ -30,4 +28,9 @@ def handle_disconnect(motivo):
 
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5500, debug=True)
+    # socketio.run(app, host="0.0.0.0", port=5555, debug=True)
+    socketio.run(app, host="0.0.0.0", port=5555, debug=True, allow_unsafe_werkzeug=True)
+
+
+# TODO para produccion
+# Usa un servidor real como eventlet, gevent, o gunicorn.

@@ -1,11 +1,15 @@
 version: '3'
 services:
   socket:
+    platform: linux/amd64
     build:
-      context: .
+      context: ./app
       dockerfile: Dockerfile
+    container_name: socket_test
     ports:
-      - "5500:5500"
+      - "5555:5555"
+    volumes:
+      - ./app:/app  # <<=== Agrega esto para montar tu código local
     networks:
       - mi-red
 networks:
